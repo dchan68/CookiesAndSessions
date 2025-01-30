@@ -59,7 +59,7 @@ app.get("/secrets", function(req, res){
   }
 })
 
-//this will trigger the strategy in line 132
+//this will trigger the strategy named "local" in line 134
 app.post("/login", passport.authenticate("local", {
   successRedirect: "/secrets",
   failureRedirect: "/login",
@@ -131,7 +131,7 @@ app.post("/login", async (req, res) => {
   // }
 });
 
-passport.use(new Strategy(async function verify(username, password, cb){
+passport.use("local", new Strategy(async function verify(username, password, cb){
   console.log(username);
   console.log(password);
   try {
